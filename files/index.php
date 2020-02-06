@@ -80,7 +80,7 @@
 
   </div>
   <p>Proceed to dashboard here</p>
-  <a href="login.html" class="btn btn-danger btn-lg">
+  <a href="login.php" class="btn btn-danger btn-lg">
     <span class="glyphicon glyphicon-user"></span> Login
   </a>
 </div>
