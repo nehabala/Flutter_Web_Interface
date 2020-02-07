@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Flutter Dashboard</title>
+  <title>Flutter - Session detail upload</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,8 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
   body {
-    font: 30px Montserrat, sans-serif;
-    line-height: 1.8;
+    font: 15px Montserrat, sans-serif;
     color: #f5f6f7;
   }
   p {font-size: 15px;}
@@ -76,10 +75,10 @@
 
 <!-- First Container -->
 
-
+<!-- 
 <div class="container-fluid bg-1 text-center">
         <span style="font-size: 50px; font-weight: bold;">Dashboard</span>
-      </div>
+      </div> -->
 
 
 
@@ -87,37 +86,35 @@
 
 <div class="container-fluid bg-2 text-center">  
   <div class="container">  
-  <h1 class="margin">What do you want to do?</h1><hr><br>
+  <h1 class="margin">Update session details here</h1><hr><br>
   <div class="row">
     <div class="col-sm-4" >
-    <div class="jumbotron bg-1">
-    <div><span style="font-size: 50px; font-weight: bold;">Update</span>
-    </div>
-    <p>Session details</p>
-    <a href="sessionDetailUploadForm.php" class="btn btn-danger btn-lg">
-    <span class="glyphicon glyphicon-upload"></span> Update
-    </a>
-    </div>
+    
     </div>
     <div class="col-sm-4" >
     <div class="jumbotron bg-1">
-    <div><span style="font-size: 50px; font-weight: bold;">Register</span>
+    <form>
+  <div class="form-group text-left">
+    <p>Session ID</p>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+  <div class="form-group  text-left">
+      <p>Patient ID</p>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>retrieve all patient IDs here</option>
+      </select>
+      <br>
+      <small id="emailHelp" class="form-text ">If patient ID is not visible, make sure they are registered first. </small>
+
     </div>
-    <p>New patient</p>
-    <a href="registerNewPatientForm.php" class="btn btn-danger btn-lg">
-    <span class="glyphicon glyphicon-plus"></span> Register
-    </a>
+    
+  <button type="submit" class="btn btn-danger"><a href="dashboard.php">Update</a></button>
+</form>
     </div>
     </div>
     <div class="col-sm-4" >
-    <div class="jumbotron bg-1">
-    <div><span style="font-size: 50px; font-weight: bold;">View</span>
-    </div>
-    <p>Paient statistics</p>
-    <a href="patientStats.php" class="btn btn-danger btn-lg">
-    <span class="glyphicon glyphicon-stats"></span> View
-    </a>
-    </div>
+    
     </div>
 </div>
 </div>
