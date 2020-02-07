@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>Flutter - Session detail upload</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -121,42 +120,16 @@
 </div>
 
 <!-- Second Container -->
-<div class="container-fluid bg-3 text-center">
+<!-- <div class="container-fluid bg-3 text-center">
   <h2 class="margin"><strong>About this project</strong></h2>
   <div class="row ">
         <p style="padding-left: 20%; padding-right: 20%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
   </div>
   
-  <?php
-$servername = "remotemysql.com";
-$username = "EePApFLdTf";
-$password = "MbWceWl53D";
-$dbname = "EePApFLdTf";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT number FROM temp";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "num: " . $row["number"]. "<br>";
-    }
-} else {
-    echo "0 results";
-}
-$conn->close();
-  
-  ?> 
+ 
 
 
-</div>
+</div> -->
 
 
 

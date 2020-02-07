@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Theme Made By www.w3schools.com - No Copyright -->
   <title>Flutter Dashboard</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,8 +76,8 @@
 <!-- First Container -->
 
 
-<div class="container-fluid bg-1 text-center">
-        <span style="font-size: 50px; font-weight: bold;">Dashboard</span>
+<div class="container-fluid bg-1 text-center " style="padding-top: 20px; padding-bottom: 20px;">
+        <span style="font-size: 60px; font-weight: bold;">Dashboard</span>
       </div>
 
 
@@ -113,7 +112,7 @@
     <div class="jumbotron bg-1">
     <div><span style="font-size: 50px; font-weight: bold;">View</span>
     </div>
-    <p>Paient statistics</p>
+    <p>Patient statistics</p>
     <a href="patientStats.php" class="btn btn-danger btn-lg">
     <span class="glyphicon glyphicon-stats"></span> View
     </a>
