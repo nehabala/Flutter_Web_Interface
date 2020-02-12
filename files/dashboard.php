@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+    if (!$_SESSION["TherapistID"]) {
+      $errormessage='Please log in first.';
+      header("Location: ./login.php?errormessage=". $errormessage);
+      exit();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,28 +76,34 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login.php">Logout</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="logout.php">Logout</a></li>
+        <li><a href="#abt">About</a></li>
+        <li><a href="#cont">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- First Container -->
-
-
 <div class="container-fluid bg-1 text-center " style="padding-top: 20px; padding-bottom: 20px;">
         <span style="font-size: 60px; font-weight: bold;">Dashboard</span>
       </div>
 
 
-
 <!-- Third Container (Grid) -->
 
 <div class="container-fluid bg-2 text-center">  
+<?php
+    if(isset($_GET["errmessage"])){
+      echo  '<div style="font-size: 15px;" class="alert alert-warning">';
+      echo   $_GET["errmessage"];
+      echo   '</div>';
+	}
+
+    ?>
   <div class="container">  
-  <h1 class="margin">What do you want to do?</h1><hr><br>
+  <h1 style="font-size: 40px;">Welcome, <?php echo $_SESSION["TherapistName"]; ?>!</h1>
+  <h4 class="">What do you want to do?</h4><hr><br>
   <div class="row">
     <div class="col-sm-4" >
     <div class="jumbotron bg-1">
@@ -123,47 +140,19 @@
 </div>
 
 <!-- Second Container -->
-<div class="container-fluid bg-3 text-center">
+<div id="abt" class="container-fluid bg-3 text-center">
   <h2 class="margin"><strong>About this project</strong></h2>
   <div class="row ">
-        <p style="padding-left: 20%; padding-right: 20%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-  </div>
-  
-  <?php
-$servername = "remotemysql.com";
-$username = "EePApFLdTf";
-$password = "MbWceWl53D";
-$dbname = "EePApFLdTf";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT number FROM temp";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "num: " . $row["number"]. "<br>";
-    }
-} else {
-    echo "0 results";
-}
-$conn->close();
-  
-  ?> 
-
-
+      <p style="padding-left: 20%; padding-right: 20%;">The main part of this project is a Virtual Reality application to be used with a Virtual Reality High-End Head Mounted Display (VR HMD) 
+      to be used as activities in the therapy for children with ADHD. The application simulates a virtual world, into which the user is 
+      transported into with the HMD, with activities, that are used by therapists to improve aspects like concentration, patience and memory in the children 
+      receiving therapy.</p><p style="padding-left: 20%; padding-right: 20%;"><strong> These activities will be timed and scored, and the scores will be shown to the therapists at the end of the session. This is where this website comes in.
+      Therapists will be able to view the collected data and make use of it to aid their therapy methods for the patients.</strong>
+      </p>
+    </div>
 </div>
-
-
-
 <!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
+<footer id="cont" class="container-fluid bg-4 text-center">
   <p>For any issues or suggestions, <a href="mailto:neha.balasundaram2016@vitstudent.ac.in" target="_top">Send us an email</a></p> 
 </footer>
 

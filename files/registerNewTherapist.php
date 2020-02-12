@@ -9,25 +9,21 @@ if (!$_SESSION["TherapistID"]) {
 }
 include("dbConfig.php");
 
-
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  $fname = $_POST['fname'];
-  $lname = $_POST['lname'];
+  $fname = $_POST['fullname'];
   $age = $_POST['age'];
   $gender = $_POST['gender'];
-  $height = $_POST['height'];
-  $weight = $_POST['weight'];
-  $bg = $_POST['bloodgroup'];
+  $qual = $_POST['qualification'];
+  $spec = $_POST['speciality'];
   $address = $_POST['address'];
-  $state = $_POST['state'];
-  $pincode = $_POST['pincode'];
   $contact = $_POST['contact'];
   $email = $_POST['email'];
+  $password = $_POST['password'];
 
 // VALIDATION 
 
-  $insert_query = "INSERT INTO `PatientDetails`(`PatientID`, `FirstName`, `LastName`, `Age`, `Gender`, `Height`, `Weight`, `BloodGroup`, `Address`, `State`, `Pincode`, `Contact`, `Email`) VALUES (NULL,'$fname','$lname',$age,'$gender',$height,$weight,'$bg','$address','$state',$pincode,$contact,'$email')";
+  $insert_query = "INSERT INTO `Therapist`(`TherapistID`, `Name`, `LastName`, `Age`, `Gender`, `Qualification`, `Speciality`, `Contact`, `Address`, `Password`) VALUES (NULL,'$fname',$age,'$gender',$qual,$spec,$contact,'$address','$password')";
   if(mysqli_query($conn,$insert_query)){
 
 
@@ -54,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Flutter - Register new patient</title>
+  <title>Flutter - Register new therapist</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -124,50 +120,42 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 </nav>
 
-<!-- First Container -->
-
-<!-- 
-<div class="container-fluid bg-1 text-center">
-        <span style="font-size: 50px; font-weight: bold;">Dashboard</span>
-      </div> -->
 
 
-
-<!-- Third Container (Grid) -->
+<!-- First Container (Grid) -->
 
 <div class="container-fluid bg-2 text-center">  
+<div class="alert alert-danger" role="alert">
+  This is a danger alert—check it out!
+</div>
   <div class="container">  
-  <h1 class="margin">Upload patient details here</h1><hr><br>
+  <h1 class="">Therapist registration</h1>
+  <h4 class="margin">Please fill in your details here</h4><hr><br>
+
   <div class="row">
     <div class="col-sm-2" >
     
     </div>
     <div class="col-sm-8" >
     <div class="jumbotron bg-1">
-    <form action = "./registerNewPatientForm.php" method = "post">
+    <form action = "" method = "post">
 
     <!-- assign proper names -->
   <div class="form-group text-left">
   <p class="text-center" style="font-size: 30px;">Personal details </p><hr>
 
-    <p>First Name</p>
-    <input name="fname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First name" required>
+    <p>Full Name</p>
+    <input type="text" name="fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Full name">
   </div>
-
-  <div class="form-group text-left">
-    <p>Last Name</p>
-    <input name="lname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last name" required>
-  </div>
-
   <div class="form-group text-left">
     <p>Age</p>
-    <input name="age" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter age" required>
+    <input type="text" name="age" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter age">
   </div>
   
   <div class="form-check form-check-inline text-left">
   <p>Gender</p>
 
-    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="M" >
+    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="M">
     <label class="form-check-label" for="inlineRadio1">Male</label>
     </div>
   <div class="form-check form-check-inline text-left">
@@ -178,85 +166,56 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <input class="form-check-input" type="radio" name="gender" id="inlineRadio3" value="O">
     <label class="form-check-label" for="inlineRadio3">Others</label>
 </div>
-<br>
 <div class="form-group text-left">
-    <p>Height (cms)</p>
-    <input name="height" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter height" required>
+    <p>Qualification</p>
+    <input type="text" name="qualification" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your qualification">
   </div>
-  <div class="form-group text-left">
-    <p>Weight (kgs)</p>
-    <input name="weight" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter weight" required>
-  </div>
-  <div class="form-group text-left">
-      <p>Blood group</p>
-      <select name="bloodgroup" id="inputState" class="form-control" required>
-        <option selected>Select blood group</option>
-        <option>A+</option>
-        <option>A-</option>
-        <option>B+</option>
-        <option>B-</option>
-        <option>O+</option>
-        <option>O-</option>
-        <option>AB+</option>
-        <option>AB-</option>
-      </select>
-      <br>
 
-    </div>
+  <div class="form-group text-left">
+    <p>Speciality</p>
+    <input type="text" name="speciality" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your speciality area">
+  </div>
+<br>
+
     <p class="text-center" style="font-size: 30px;">Contact details </p> <hr>
     <div class="form-group text-left">
 
     <p>Address</p>
-    <input name="address" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter address" required>
-  </div>
-
-  <div class="form-group text-left">
-    <p>State</p>
-    <input name="State" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter state" required>
-  </div>
-
-  <div class="form-group text-left">
-    <p>Pincode</p>
-    <input name="pincode" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter pincode (6 digits only)" required>
+    <input type="text" name="address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter address">
   </div>
 
   <div class="form-group text-left">
     <p>Contact number</p>
-    <input name="contact" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter contact number" required>
+    <input type="text" name="contact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter contact number">
   </div>
 
   <div class="form-group text-left">
     <p>Email</p>
-    <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email ID" required>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email ID">
   </div>
-  <p class="text-left" style="font-size: 15px;">Patient ID will be shown once registered. </p>
 
-  <input type="submit" name="submit" value="Register" class="btn btn-danger">
-  <!-- todo: show a popup with patient -->
+  <div class="form-group text-left">
+    <p>Password</p>
+    <input type="password" name="password1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email ID">
+  </div>
+  <div class="form-group text-left">
+    <p>Confirm password</p>
+    <input type="password" name="password2" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email ID">
+  </div>
+  <p class="text-left" style="font-size: 15px;">Your Therapist ID will be shown once you have registered. </p>
+
+  <button type="submit" Value="submit" class="btn btn-danger">Register</button>
+  <!-- todo: show a popup with therapist ID -->
 </form>
     </div>
     </div>
-    
+   
     <div class="col-sm-2" >
     
     </div>
 </div>
 </div>
 </div>
-
-<!-- Second Container -->
-<!-- <div class="container-fluid bg-3 text-center">
-  <h2 class="margin"><strong>About this project</strong></h2>
-  <div class="row ">
-        <p style="padding-left: 20%; padding-right: 20%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-  </div>
-  
-  
-
-
-</div> -->
-
-
 
 <!-- Footer -->
 <footer id="cont" class="container-fluid bg-4 text-center">

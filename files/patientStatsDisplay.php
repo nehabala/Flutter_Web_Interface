@@ -68,9 +68,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login.php">Logout</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+      <li><a href="logout.php">Logout</a></li>
+        <li><a href="#cont">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -204,7 +203,7 @@
 
 
 <!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
+<footer id="cont" class="container-fluid bg-4 text-center">
   <p>For any issues or suggestions, <a href="mailto:neha.balasundaram2016@vitstudent.ac.in" target="_top">Send us an email</a></p> 
 </footer>
 

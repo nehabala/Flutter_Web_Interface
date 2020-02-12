@@ -1,3 +1,16 @@
+<?php
+
+    session_start();
+    if (!$_SESSION["TherapistID"]) {
+      $errormessage='Please log in first.';
+      header("Location: ./login.php?errormessage=". $errormessage);
+      exit();
+    }
+
+    include("dbConfig.php");
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,24 +77,14 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login.php">Logout</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+      <li><a href="logout.php">Logout</a></li>
+        <li><a href="#cont">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- First Container -->
-
-<!-- 
-<div class="container-fluid bg-1 text-center">
-        <span style="font-size: 50px; font-weight: bold;">Dashboard</span>
-      </div> -->
-
-
-
-<!-- Third Container (Grid) -->
+<!-- First Container (Grid) -->
 
 <div class="container-fluid bg-2 text-center">  
   <div class="container">  
@@ -93,20 +96,29 @@
     </div>
     <div class="col-sm-4" >
     <div class="jumbotron bg-1">
-    <form>
+    <form action = "./patientStatsDisplay.php" method = "post">
   
-  <div class="form-group  text-left">
+    <div class="form-group  text-left">
       <p>Patient ID</p>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>retrieve all patient IDs here</option>
+   <select class="form-control" id="patID" name="patID" required >
+   <option selected>Choose...</option>
+
+                   <?php
+                   
+                   $patID_list_query = "SELECT PatientID FROM PatientDetails";
+                   
+                   $patID_list_query_result = mysqli_query($conn,$patID_list_query);
+                   
+                   while($row =  mysqli_fetch_row($patID_list_query_result)){
+                   echo '<option>'.$row[0].'</option>';
+                   }?>
       </select>
       <br>
       <small id="emailHelp" class="form-text ">If patient ID is not visible, make sure they are registered first. </small>
 
     </div>
     
-  <button type="submit" class="btn btn-danger" ><a href="patientStatsDisplay.php">Confirm</a></button>
+    <input type="submit" name="submit" value="View details" class="btn btn-danger">
 </form>
     </div>
     </div>
@@ -128,7 +140,7 @@
 
 
 <!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
+<footer id="cont" class="container-fluid bg-4 text-center">
   <p>For any issues or suggestions, <a href="mailto:neha.balasundaram2016@vitstudent.ac.in" target="_top">Send us an email</a></p> 
 </footer>
 

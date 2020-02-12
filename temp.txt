@@ -1,0 +1,2 @@
+
+  if(empty(trim($_POST["fullname"]))||empty(trim($_POST["age"]))||empty(trim($_POST["gender"]))||empty(trim($_POST["address"]))||empty(trim($_POST["contact"]))||empty(trim($_POST["email"]))||empty(trim($_POST["password"]))||){

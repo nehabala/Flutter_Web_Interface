@@ -65,9 +65,9 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Login</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+      <li><a href="logout.php">Logout</a></li>
+        <li><a href="#abt">About</a></li>
+        <li><a href="#cont">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -78,24 +78,38 @@
   <div><span style="font-size: 50px; font-weight: bold;">Flutter</span>
 
   </div>
-  <p>Proceed to dashboard here</p>
+  <div>
+  <p style="font-size: 20px; ">Proceed to dashboard here</p>
   <a href="login.php" class="btn btn-danger btn-lg">
     <span class="glyphicon glyphicon-user"></span> Login
   </a>
+  </div>
+  <br>
+  <div>
+  <p style="font-size: 20px; ">Register as a therapist here</p>
+  <a href="registerNewTherapist.php" class="btn btn-danger btn-lg">
+    <span class="glyphicon glyphicon-plus"></span> Register
+  </a>
+  </div>
 </div>
 
 <!-- Second Container -->
-<div class="container-fluid bg-3 text-center">
+<div id="abt" class="container-fluid bg-3 text-center">
   <h2 class="margin"><strong>About this project</strong></h2>
   <div class="row ">
-      <p style="padding-left: 20%; padding-right: 20%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+      <p style="padding-left: 20%; padding-right: 20%;">The main part of this project is a Virtual Reality application to be used with a Virtual Reality High-End Head Mounted Display (VR HMD) 
+      to be used as activities in the therapy for children with ADHD. The application simulates a virtual world, into which the user is 
+      transported into with the HMD, with activities, that are used by therapists to improve aspects like concentration, patience and memory in the children 
+      receiving therapy.</p><p style="padding-left: 20%; padding-right: 20%;"><strong> These activities will be timed and scored, and the scores will be shown to the therapists at the end of the session. This is where this website comes in.
+      Therapists will be able to view the collected data and make use of it to aid their therapy methods for the patients.</strong>
+      </p>
   
 </div>
   
 </div>
 
 <!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
+<footer id="cont" class="container-fluid bg-4 text-center">
   <p>For any issues or suggestions, <a href="mailto:neha.balasundaram2016@vitstudent.ac.in" target="_top">Send us an email</a></p> 
 </footer>
 
