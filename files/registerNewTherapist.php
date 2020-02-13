@@ -23,11 +23,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // VALIDATION 
 
-  $insert_query = "INSERT INTO `Therapist`(`TherapistID`, `Name`, `LastName`, `Age`, `Gender`, `Qualification`, `Speciality`, `Contact`, `Address`, `Password`) VALUES (NULL,'$fname',$age,'$gender',$qual,$spec,$contact,'$address','$password')";
+  $insert_query = "INSERT INTO TherapistDetails(`TherapistID`, `Name`, `Age`, `Gender`, `Qualification`, `Speciality`, `Contact`, `Address`, `Password`) VALUES (NULL,'$fname',$age,'$gender','$qual','$spec',$contact,'$address','$password');";
   if(mysqli_query($conn,$insert_query)){
 
 
-    $errmessage='Therapist details updated.';
+    $errmessage='Therapist details updated. Please login again.';
 
     $therapistid_query = "SELECT `TherapistID` FROM `TherapistDetails` WHERE Address ='$address' and Contact= $contact;";
     $res = mysqli_query($conn,$therapistid_query);
@@ -36,12 +36,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $errmessage .= " Please note the Therapist ID : $therapistid"; 
 
-	  header("Location: ./dashboard.php?errmessage=". $errmessage);
+	  header("Location: ./login.php?errmessage=". $errmessage);
 	  exit();
   }
   else{
     $errmessage='Patient details not updated. Please try again.' . $insert_query;
-	  header("Location: ./dashboard.php?errmessage=". $errmessage);
+	  header("Location: ./login.php?errmessage=". $errmessage);
 	  exit();
 
   }
@@ -125,9 +125,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- First Container (Grid) -->
 
 <div class="container-fluid bg-2 text-center">  
-<div class="alert alert-danger" role="alert">
-  This is a danger alert—check it out!
-</div>
+
   <div class="container">  
   <h1 class="">Therapist registration</h1>
   <h4 class="margin">Please fill in your details here</h4><hr><br>
@@ -138,7 +136,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <div class="col-sm-8" >
     <div class="jumbotron bg-1">
-    <form action = "" method = "post">
+    <form action = "registerNewTherapist.php" method = "post">
 
     <!-- assign proper names -->
   <div class="form-group text-left">
@@ -196,11 +194,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <div class="form-group text-left">
     <p>Password</p>
-    <input type="password" name="password1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email ID">
+    <input type="password" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password">
   </div>
   <div class="form-group text-left">
     <p>Confirm password</p>
-    <input type="password" name="password2" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email ID">
+    <input type="password" name="password2" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Re-enter password">
   </div>
   <p class="text-left" style="font-size: 15px;">Your Therapist ID will be shown once you have registered. </p>
 

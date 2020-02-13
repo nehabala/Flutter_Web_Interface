@@ -157,8 +157,8 @@ else {
 	<?php
     //session_start();
     if(isset($_GET["errmessage"])){
-      echo  '<div class="alert alert-warning text-center">';
-      echo   '<strong>Error! </strong>' . $_GET["errmessage"];
+      echo  '<div class="alert alert-success text-center">';
+      echo   $_GET["errmessage"];
       echo   '</div>';
 	}
 

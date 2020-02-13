@@ -13,7 +13,7 @@ session_start();
     if(isset($_GET["patid"])){
       $patientID = $_GET["patid"];
     }
-    
+    //for patient details field names
     $col_names_query = "SHOW columns FROM PatientDetails; ";
 
     $col_names_query_result = mysqli_query($conn,$col_names_query);
@@ -23,7 +23,7 @@ session_start();
 
       array_push($cols,$col_names_row['Field']) ;
     }
-
+    //for the actual details
     $patient_details_query = "SELECT * FROM `PatientDetails` WHERE PatientID = $patientID;";
               
     $patient_details_query_result = mysqli_query($conn,$patient_details_query);
@@ -43,6 +43,21 @@ session_start();
     $contact = $row[11]; 
     $email = $row[12]; 
 
+    // for the sessions of the patient
+
+    $session_details_query = "SELECT * FROM `SessionDetails` WHERE PatientID = $patientID ORDER BY SessionID;";
+    $session_details_query_result = mysqli_query($conn,$session_details_query);
+    
+    //for patient details field names
+    $sess_col_names_query = "SHOW columns FROM SessionDetails; ";
+
+    $sess_col_names_query_result = mysqli_query($conn,$sess_col_names_query);
+
+    $sess_cols = array();
+    while($sess_col_names_row = mysqli_fetch_assoc($sess_col_names_query_result)){
+
+      array_push($sess_cols,$sess_col_names_row['Field']) ;
+    }
 
 ?>
 <!DOCTYPE html>
@@ -138,13 +153,12 @@ session_start();
   <table class="table table-borderless">
   <?php
   $i = 0;
-
+//add t head if u want
   for($i = 0; $i < count($cols); $i++ ){
     echo '<tr> <td> <strong>' . $cols[$i] . '</strong></td> <td>' . $row[$i] . '</td></tr>' ;
   }
 
-?>
-  
+?>  
   </table>
   </div>
 
@@ -164,59 +178,32 @@ session_start();
   <div class="table-responsive">
   <table class="table ">
   <thead>
-    <tr>
-      <th scope="col">S.No.</th>
-      <th scope="col">Session ID</th>
-      <th scope="col">Date and Time</th>
-      <th scope="col">Activity number</th>
-      <th scope="col">Total time</th>
-      <th scope="col">Total distraction time</th>
-      <th scope="col">Total attention time</th>
-      <th scope="col">Number of distractions</th>
+  <tr>
+  <?php
+  foreach($sess_cols as $t){
+    echo "<th> $t </th>";
 
+  }
 
-
+  ?>
+   
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
 
+  <?php
+    
+    while($session_details_cols = mysqli_fetch_assoc($session_details_query_result)){
+      echo "<tr>";
+      foreach($session_details_cols as $t){
 
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+        echo "<td> $t </td>";
+      }
 
-
-
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td >Larry the Bird</td>
-      <td>@twitter</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-
-
-
-    </tr>
+      echo "</tr>";
+    }
+  ?>
+    
   </tbody>
 </table>
 </div>
@@ -224,13 +211,17 @@ session_start();
 
   <p class="text-center" style="font-size: 30px;">Progress charts </p><hr>
 
-  <div class="jumbotron whitebg">
-  <div class="row">
-    <div class="col-md-6">
-        <div id="piechart"></div>
-    </div>
-    <div class="col-md-6">
-    <div id="curve_chart" ></div>
+  <div class="jumbotron ">
+  <div class="row" >
+  <p class="text-center" style="font-size: 20px; color:black;">Pie chart for .... </p>
+
+        <div id="piechart" style="width:100%; min-height:450px; align:center;"></div>
+        </div>
+        <br>
+        <p class="text-center" style="font-size: 20px; color:black;">Curve chart for .... </p>
+
+        <div>
+    <div id="curve_chart" style="width:100%; min-height:450px; align:center;"></div>
 
     </div>
   </div>
@@ -296,7 +287,7 @@ function drawChart() {
 ]);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'title':'My Average Day', 'width':550, 'height':400};
+  var options = {'title':''};
 
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
