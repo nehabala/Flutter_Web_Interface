@@ -212,7 +212,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <div class="form-group text-left">
     <p>State</p>
-    <input name="State" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter state" required>
+    <input name="state" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter state" required>
   </div>
 
   <div class="form-group text-left">

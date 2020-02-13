@@ -2,11 +2,11 @@
 
 session_start();
 
-if (!$_SESSION["TherapistID"]) {
-  $errormessage='Please log in first.';
-  header("Location: ./login.php?errormessage=". $errormessage);
-  exit();
-}
+// if (!$_SESSION["TherapistID"]) {
+//   $errormessage='Please log in first.';
+//   header("Location: ./login.php?errormessage=". $errormessage);
+//   exit();
+// }
 include("dbConfig.php");
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
