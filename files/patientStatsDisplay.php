@@ -1,3 +1,50 @@
+<?php
+
+session_start();
+    if (!$_SESSION["TherapistID"]) {
+      $errormessage='Please log in first.';
+      header("Location: ./login.php?errormessage=". $errormessage);
+      exit();
+    }
+
+    include("dbConfig.php");
+
+    $patientID = 0;
+    if(isset($_GET["patid"])){
+      $patientID = $_GET["patid"];
+    }
+    
+    $col_names_query = "SHOW columns FROM PatientDetails; ";
+
+    $col_names_query_result = mysqli_query($conn,$col_names_query);
+
+    $cols = array();
+    while($col_names_row = mysqli_fetch_assoc($col_names_query_result)){
+
+      array_push($cols,$col_names_row['Field']) ;
+    }
+
+    $patient_details_query = "SELECT * FROM `PatientDetails` WHERE PatientID = $patientID;";
+              
+    $patient_details_query_result = mysqli_query($conn,$patient_details_query);
+
+    $row =  mysqli_fetch_row($patient_details_query_result);
+
+    $fname = $row[1]; 
+    $lname = $row[2]; 
+    $age = $row[3]; 
+    $gender = $row[4];
+    $height = $row[5];
+    $weight = $row[6];
+    $bg = $row[7]; 
+    $address = $row[8]; 
+    $state = $row[9]; 
+    $pincode = $row[10]; 
+    $contact = $row[11]; 
+    $email = $row[12]; 
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +98,11 @@
   .navbar-nav  li a:hover {
     color: #1abc9c !important;
   }
+
+  .table-borderless td,
+.table-borderless th {
+    border: 0;
+}
   </style>
 </head>
 <body>
@@ -75,21 +127,38 @@
   </div>
 </nav>
 
-<!-- First Container -->
+<!-- First container -->
+<div class="container-fluid bg-1 text-center">  
+  <div class="container" style="padding-left: 7%; padding-right: 7%;"> 
+  <div class="jumbotron bg-3 text-left">
+  <p class="text-center" style="font-size: 30px;">Patient details of <strong><?php echo "$fname $lname";?> </strong></p> <br>
+  
+  
+  <div class="table-responsive text-center">
+  <table class="table table-borderless">
+  <?php
+  $i = 0;
 
-<!-- 
-<div class="container-fluid bg-1 text-center">
-        <span style="font-size: 50px; font-weight: bold;">Dashboard</span>
-      </div> -->
+  for($i = 0; $i < count($cols); $i++ ){
+    echo '<tr> <td> <strong>' . $cols[$i] . '</strong></td> <td>' . $row[$i] . '</td></tr>' ;
+  }
+
+?>
+  
+  </table>
+  </div>
+
+    </div>
+  </div>
+</div>
 
 
-
-<!-- Third Container (Grid) -->
+<!-- Second Container -->
 
 <div class="container-fluid bg-1 text-center">  
   <div class="container">  
   <div class="row">
-  <p class="text-center" style="font-size: 30px;">Session data for (Patient name) </p><hr>
+  <p class="text-center" style="font-size: 30px;">Session data for <strong><?php echo "$fname $lname";?> </strong></p><hr>
 
   <div class="jumbotron bg-2 text-left">
   <div class="table-responsive">

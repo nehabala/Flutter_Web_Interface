@@ -27,14 +27,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   if(mysqli_query($conn,$insert_query)){
 
 
-    $errmessage='Patient details updated.';
+    $errmessage='Therapist details updated.';
 
-    $patid_query = "SELECT `PatientID` FROM `PatientDetails` WHERE Address ='$address' and Contact= $contact;";
-    $res = mysqli_query($conn,$patid_query);
+    $therapistid_query = "SELECT `TherapistID` FROM `TherapistDetails` WHERE Address ='$address' and Contact= $contact;";
+    $res = mysqli_query($conn,$therapistid_query);
     $row =  mysqli_fetch_row($res);
-    $patid = $row[0];
+    $therapistid = $row[0];
 
-    $errmessage .= " Please note the Patient ID : $patid"; 
+    $errmessage .= " Please note the Therapist ID : $therapistid"; 
 
 	  header("Location: ./dashboard.php?errmessage=". $errmessage);
 	  exit();

@@ -8,6 +8,12 @@
     }
 
     include("dbConfig.php");
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+      $patid =  $_POST['patid'];
+      header("Location: ./patientStatsDisplay.php?patid=". $patid);
+	    exit();
+
+    }
 
 
 ?>
@@ -89,18 +95,18 @@
 <div class="container-fluid bg-2 text-center">  
   <div class="container">  
   <div class="row">
-  <p class="text-center" style="font-size: 30px;">Select patient ID </p><hr>
+  <p class="text-center" style="font-size: 30px;">Select patient ID to view details and stats </p><hr>
 
     <div class="col-sm-4" >
     
     </div>
     <div class="col-sm-4" >
     <div class="jumbotron bg-1">
-    <form action = "./patientStatsDisplay.php" method = "post">
+    <form action = "./patientStats.php" method = "post">
   
     <div class="form-group  text-left">
       <p>Patient ID</p>
-   <select class="form-control" id="patID" name="patID" required >
+   <select class="form-control" id="patid" name="patid" required >
    <option selected>Choose...</option>
 
                    <?php
