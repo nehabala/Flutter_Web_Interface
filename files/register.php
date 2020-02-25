@@ -8,14 +8,17 @@ $database = 'EePApFLdTf';
 $conn = mysqli_connect($server, $username, $password, $database );
 
 if (!$conn) {
-    echo "1 : connection failed";
+    echo "1";
     exit();
 }
 
 $number = $_POST["num"];
 $insert_query = "INSERT INTO `temp`(`number`) VALUES ($number);"; 
+$res = mysqli_query($conn, $insert_query) or die("1");
 
-$res = mysqli_query($conn, $insert_query) or die("2 : Insertion failed");
-
-echo("0");
+//to get id
+$sid_query = "SELECT sid FROM `temp` WHERE number=$number;";;
+$sid_res = mysqli_query($conn, $sid_query) or die("1");
+$sid = mysqli_fetch_row($sid_res);
+echo($sid[0]);
 ?>
