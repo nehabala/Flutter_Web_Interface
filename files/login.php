@@ -77,7 +77,7 @@ else {
 			width: 350px;
 			margin-top: auto;
 			margin-bottom: auto;
-			background: #1abc9c;
+			background: #59afce;
 			position: relative;
 			display: flex;
 			justify-content: center;

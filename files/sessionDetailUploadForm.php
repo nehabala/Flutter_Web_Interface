@@ -49,12 +49,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   p {font-size: 15px;}
   .margin {margin-bottom: 45px;}
   .bg-1 { 
-    background-color: #1abc9c; /* Green */
+    background-color: #65a4ba; /* Green */
     color: #ffffff;
   }
   .bg-2 { 
-    background-color: #474e5d; /* Dark Blue */
-    color: #ffffff;
+    background-color: #ffffff; /* Dark Blue */
+    color: #000000;
   }
   .bg-3 { 
     background-color: #0e7265; /* White */
@@ -62,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   }
   .bg-4 { 
     background-color: #2f2f2f; /* Black Gray */
-    color: #fff;
+    color: #ffffff;
   }
   .container-fluid {
     padding-top: 70px;
@@ -78,14 +78,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     letter-spacing: 5px;
   }
   .navbar-nav  li a:hover {
-    color: #1abc9c !important;
+    color: #ffffff !important;
   }
   </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-default">
+<nav class="navbar bg-4 navbar-default">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -93,7 +93,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Flutter</a>
+      <a class="navbar-brand" href="#"><img src="./images/logoBig.png" style="max-height: 20px; width: auto;"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">

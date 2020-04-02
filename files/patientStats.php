@@ -35,7 +35,7 @@
   p {font-size: 15px;}
   .margin {margin-bottom: 45px;}
   .bg-1 { 
-    background-color: #1abc9c; /* Green */
+    background-color: #65a4ba; /* Green */
     color: #ffffff;
   }
   .bg-2 { 
@@ -71,7 +71,7 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-default">
+<nav class="navbar bg-4 navbar-default">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -79,7 +79,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Flutter</a>
+      <a class="navbar-brand" href="#"><img src="./images/logo.png" style="max-height: 20px; width: auto;"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -92,10 +92,10 @@
 
 <!-- First Container (Grid) -->
 
-<div class="container-fluid bg-2 text-center">  
+<div class="container-fluid  text-center">  
   <div class="container">  
   <div class="row">
-  <p class="text-center" style="font-size: 30px;">Select patient ID to view details and stats </p><hr>
+  <p class="text-center" style="font-size: 30px; color: black;">Select patient ID to view details and stats </p><hr>
 
     <div class="col-sm-4" >
     

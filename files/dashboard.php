@@ -28,7 +28,7 @@ session_start();
   p {font-size: 15px;}
   .margin {margin-bottom: 45px;}
   .bg-1 { 
-    background-color: #1abc9c; /* Green */
+    background-color: #65a4ba; /* Green */
     color: #ffffff;
   }
   .bg-2 { 
@@ -41,7 +41,7 @@ session_start();
   }
   .bg-4 { 
     background-color: #2f2f2f; /* Black Gray */
-    color: #fff;
+    color: #ffffff;
   }
   .container-fluid {
     padding-top: 70px;
@@ -57,14 +57,14 @@ session_start();
     letter-spacing: 5px;
   }
   .navbar-nav  li a:hover {
-    color: #1abc9c !important;
+    color: #ffffff !important;
   }
   </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-default">
+<nav class="navbar bg-4 navbar-default">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -72,7 +72,7 @@ session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Flutter</a>
+      <a class="navbar-brand" href="#"><img src="./images/logo.png" style="max-height: 20px; width: auto;"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -92,7 +92,7 @@ session_start();
 
 <!-- Third Container (Grid) -->
 
-<div class="container-fluid bg-2 text-center">  
+<div class="container-fluid  text-center">  
 <?php
     if(isset($_GET["errmessage"])){
       echo  '<div style="font-size: 15px;" class="alert alert-warning">';
@@ -102,8 +102,8 @@ session_start();
 
     ?>
   <div class="container">  
-  <h1 style="font-size: 40px;">Welcome, <?php echo $_SESSION["TherapistName"]; ?>!</h1>
-  <h4 class="">What do you want to do?</h4><hr><br>
+  <h1 style="font-size: 40px; color: black;">Welcome, <?php echo $_SESSION["TherapistName"]; ?>!</h1>
+  <h4 style="color: black;">What do you want to do?</h4><hr style="color: black;"><br>
   <div class="row">
     <div class="col-sm-4" >
     <div class="jumbotron bg-1">
@@ -140,7 +140,7 @@ session_start();
 </div>
 
 <!-- Second Container -->
-<div id="abt" class="container-fluid bg-3 text-center">
+<!-- <div id="abt" class="container-fluid bg-1 text-center">
   <h2 class="margin"><strong>About this project</strong></h2>
   <div class="row ">
       <p style="padding-left: 20%; padding-right: 20%;">The main part of this project is a Virtual Reality application to be used with a Virtual Reality High-End Head Mounted Display (VR HMD) 
@@ -150,7 +150,7 @@ session_start();
       Therapists will be able to view the collected data and make use of it to aid their therapy methods for the patients.</strong>
       </p>
     </div>
-</div>
+</div> -->
 <!-- Footer -->
 <footer id="cont" class="container-fluid bg-4 text-center">
   <p>For any issues or suggestions, <a href="mailto:neha.balasundaram2016@vitstudent.ac.in" target="_top">Send us an email</a></p> 

@@ -69,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   p {font-size: 15px;}
   .margin {margin-bottom: 45px;}
   .bg-1 { 
-    background-color: #1abc9c; /* Green */
+    background-color: #65a4ba; /* Green */
     color: #ffffff;
   }
   .bg-2 { 
@@ -105,7 +105,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-default">
+<nav class="navbar bg-4 navbar-default">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -113,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Flutter</a>
+      <a class="navbar-brand" href="#"><img src="./images/logo.png" style="max-height: 20px; width: auto;"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -135,9 +135,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!-- Third Container (Grid) -->
 
-<div class="container-fluid bg-2 text-center">  
+<div class="container-fluid  text-center">  
   <div class="container">  
-  <h1 class="margin">Upload patient details here</h1><hr><br>
+  <h1 class="margin" style="color: black;">Upload patient details here</h1><hr><br>
   <div class="row">
     <div class="col-sm-2" >
     

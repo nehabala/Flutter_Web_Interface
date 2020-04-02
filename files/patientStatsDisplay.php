@@ -82,7 +82,7 @@ session_start();
   p {font-size: 15px;}
   .margin {margin-bottom: 45px;}
   .bg-1 { 
-    background-color: #1abc9c; /* Green */
+    background-color: #65a4ba; /* Green */
     color: #ffffff;
   }
   .bg-2 { 
@@ -90,8 +90,8 @@ session_start();
     color: #ffffff;
   }
   .bg-3 { 
-    background-color: #0e7265; /* White */
-    color: #ffffff;
+    background-color: #ffffff; /* White */
+    color: #000000;
   }
   .bg-4 { 
     background-color: #2f2f2f; /* Black Gray */
@@ -111,7 +111,7 @@ session_start();
     letter-spacing: 5px;
   }
   .navbar-nav  li a:hover {
-    color: #1abc9c !important;
+    color: #ffffff !important;
   }
 
   .table-borderless td,
@@ -123,7 +123,7 @@ session_start();
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-default">
+<nav class="navbar bg-4 navbar-default">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -131,7 +131,7 @@ session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Flutter</a>
+      <a class="navbar-brand" href="#"><img src="./images/logo.png" style="max-height: 20px; width: auto;"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -143,10 +143,11 @@ session_start();
 </nav>
 
 <!-- First container -->
-<div class="container-fluid bg-1 text-center">  
+<div class="container-fluid bg-3 text-center">  
   <div class="container" style="padding-left: 7%; padding-right: 7%;"> 
-  <div class="jumbotron bg-3 text-left">
-  <p class="text-center" style="font-size: 30px;">Patient details of <strong><?php echo "$fname $lname";?> </strong></p> <br>
+  <p class="text-center" style="font-size: 30px; color: black;">Patient details of <strong><?php echo "$fname $lname";?> </strong></p> <br>
+  <div class="jumbotron bg-1 text-left">
+  
   
   
   <div class="table-responsive text-center">
@@ -169,12 +170,12 @@ session_start();
 
 <!-- Second Container -->
 
-<div class="container-fluid bg-1 text-center">  
+<div class="container-fluid text-center">  
   <div class="container">  
   <div class="row">
-  <p class="text-center" style="font-size: 30px;">Session data for <strong><?php echo "$fname $lname";?> </strong></p><hr>
+  <p class="text-center" style="font-size: 30px; color: black;">Session data for <strong><?php echo "$fname $lname";?> </strong></p><hr>
 
-  <div class="jumbotron bg-2 text-left">
+  <div class="jumbotron bg-1 text-left">
   <div class="table-responsive">
   <table class="table ">
   <thead>
@@ -208,17 +209,18 @@ session_start();
 </table>
 </div>
   </div>
+  <br><br><br>
 
-  <p class="text-center" style="font-size: 30px;">Progress charts </p><hr>
+  <p class="text-center" style="font-size: 30px; color: black;">Progress charts </p><hr>
 
   <div class="jumbotron ">
   <div class="row" >
-  <p class="text-center" style="font-size: 20px; color:black;">Pie chart for .... </p>
+  <p class="text-center" style="font-size: 20px; color:black;">Pie chart for Time distribution  </p>
 
         <div id="piechart" style="width:100%; min-height:450px; align:center;"></div>
         </div>
         <br>
-        <p class="text-center" style="font-size: 20px; color:black;">Curve chart for .... </p>
+        <p class="text-center" style="font-size: 20px; color:black;">Curve chart for Attention times </p>
 
         <div>
     <div id="curve_chart" style="width:100%; min-height:450px; align:center;"></div>
@@ -279,11 +281,10 @@ google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
   ['Task', 'Hours per Day'],
-  ['Work', 8],
-  ['Eat', 2],
-  ['TV', 4],
-  ['Gym', 2],
-  ['Sleep', 8]
+  ['Idle', 8],
+  ['Attention', 2],
+  ['Distraction', 4]
+  
 ]);
 
   // Optional; add a title and set the width and height of the chart
@@ -302,15 +303,15 @@ function drawChart() {
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
+          ['Month', 'Attention span (%)'],
+          ['Jan',  10],
+          ['Feb',  20],
+          ['Mar',  30],
+          ['Apr',  50]
         ]);
 
         var options = {
-          title: 'Company Performance',
+          title: '',
           curveType: 'function',
           legend: { position: 'bottom' }
         };
